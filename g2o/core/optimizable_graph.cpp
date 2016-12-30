@@ -419,6 +419,7 @@ bool OptimizableGraph::load(istream& is, bool createEdges)
       handledCommand = true;
       int id;
       while (currentLine >> id) {
+//        cerr << "Id: " << id << endl;
         OptimizableGraph::Vertex* v = static_cast<OptimizableGraph::Vertex*>(vertex(id));
         if (v) {
 #        ifndef NDEBUG
@@ -457,10 +458,12 @@ bool OptimizableGraph::load(istream& is, bool createEdges)
       Vertex* v = static_cast<Vertex*>(element);
       int id;
       currentLine >> id;
-      bool r = v->read(currentLine);
+//        cerr << "id = " << id << endl;
+      v->setId(id);
+
+       bool r = v->read(currentLine);
       if (! r)
         cerr << __PRETTY_FUNCTION__ << ": Error reading vertex " << token << " " << id << endl;
-      v->setId(id);
       if (!addVertex(v)) {
         cerr << __PRETTY_FUNCTION__ << ": Failure adding Vertex, " << token << " " << id << endl;
         delete v;
@@ -482,6 +485,7 @@ bool OptimizableGraph::load(istream& is, bool createEdges)
       if (numV == 2) { // it's a pairwise / binary edge type which we handle in a special way
         int id1, id2;
         currentLine >> id1 >> id2;
+//          cerr << "id = " << id1 <<", "<<id2 << endl;
         Vertex* from = vertex(id1);
         Vertex* to = vertex(id2);
         int doInit=0;

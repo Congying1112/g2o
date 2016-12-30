@@ -26,3 +26,6 @@ IF(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/playground")
     ADD_SUBDIRECTORY(playground)
   ENDIF()
 ENDIF()
+
+
+ADD_SUBDIRECTORY(customer)

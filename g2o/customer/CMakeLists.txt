@@ -1,0 +1,2 @@
+ADD_SUBDIRECTORY(scale_optimize)
+add_subdirectory(2dslam_with_scale)
